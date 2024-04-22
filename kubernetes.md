@@ -52,6 +52,7 @@ We currently support Nginx and Istio as load balancers in Bold BI. Nginx is used
 There is an issue with the latest Nginx Ingress controller where the default value for the `allow-snippet-annotations` is set to false. To resolve this, edit the Nginx Ingress ConfigMap file and set the value to true.
 
 ![alt text](images/snippet-true.png)
+
 Use the following command to edit the ConfigMap:
     
     kubectl edit cm ingress-nginx-controller -n ingress-nginx
@@ -105,6 +106,9 @@ Bold BI supports three databases for deployment on a cluster:
     ![Replace File storage name](images/replace-storage-name.png)
     ![After Replacing File Storage name](images/After-replace-fileshare.png)
 6. Connect with your Microsoft AKS cluster.
+
+    https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#connect-to-the-cluster
+
 7. After connecting with your cluster, deploy the latest Nginx ingress controller to your cluster using the following command.
     ```bash 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
@@ -123,7 +127,7 @@ Bold BI supports three databases for deployment on a cluster:
     ```bash 
     kubectl get pods -n bold-services
 
-14. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 10 to access the application in the browser.
+14. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 8 to access the application in the browser.
 
 
 # Deploying Bold BI on AWS Elastic Kubernetes Service (EKS)
@@ -134,6 +138,7 @@ Bold BI supports three databases for deployment on a cluster:
 2. Create a Kubernetes cluster in AWS Elastic Kubernetes Service (EKS) and node group to deploy Bold BI.
 
 3. Connect to your Amazon EKS cluster.
+    https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/
 
 4. Note the File System ID to store the shared folders for application usage.
     ![File-System-ID](images/file-system-id.png)
@@ -161,25 +166,23 @@ Bold BI supports three databases for deployment on a cluster:
     ```bash
     kubectl apply -k .
 
-12. lease wait for some time until the Bold BI application is deployed to your Microsoft AKS cluster.
+12. Please wait for some time until the Bold BI application is deployed to your Microsoft AKS cluster.
 
 13. Use the following command to get the pods status.
     ```bash 
     kubectl get pods -n bold-services
 
-14. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 10 to access the application in the browser.
+14. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 8 to access the application in the browser.
 
 ### Deploying Bold BI on Google Kubernetes Engine (GKE)
 1. Download the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/tree/mohamed/gke/boldbi) file for Bold BI deployment in GKE. 
 
 2. Create a Kubernetes cluster in Google Cloud Platform (GCP) to deploy Bold BI.
-https://console.cloud.google.com/kubernetes
 
 3. Connect with your GKE cluster.
 https://cloud.google.com/kubernetes-engine/docs/quickstart
 
 4. Create a Google filestore instance to store the shared folders for application usage.
-https://console.cloud.google.com/filestore
 
 5. Note the File share name and IP address after creating filestore instance.
 
