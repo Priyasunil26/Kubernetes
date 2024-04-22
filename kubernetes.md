@@ -95,18 +95,14 @@ Bold BI supports three databases for deployment on a cluster:
 
 ## Deployment using kubectl
 [
-<kbd style="font-size: 100px; padding: 100px 200px;">AKS</kbd>
-](
-#deploying-bold-bi-on-microsoft-azure-kubernetes-service-aks
-) [
-<kbd style="font-size: 100px; padding: 100px 200px;">EKS</kbd>
-](
-#deploying-bold-bi-on-aws-elastic-kubernetes-service-eks
-)  [
-<kbd style="font-size: 100px; padding: 100px 200px;">GKE</kbd>
-](
-#deploying-bold-bi-on-google-kubernetes-engine-gke
-)
+<kbd style="font-size: 24px; padding: 20px 40px;">AKS</kbd>
+](#deploying-bold-bi-on-microsoft-azure-kubernetes-service-aks)
+[
+<kbd style="font-size: 24px; padding: 20px 40px;">EKS</kbd>
+](#deploying-bold-bi-on-aws-elastic-kubernetes-service-eks)
+[
+<kbd style="font-size: 24px; padding: 20px 40px;">GKE</kbd>
+](#deploying-bold-bi-on-google-kubernetes-engine-gke)
 
 ### Deploying Bold BI on Microsoft Azure Kubernetes Service (AKS)
 1. Download the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/blob/mohamed/aks/boldbi/kustomization.yaml) file for Bold BI deployment in AKS.
