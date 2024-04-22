@@ -218,7 +218,9 @@ https://cloud.google.com/kubernetes-engine/docs/quickstart
 4. Open the Kustomization.yaml file that was downloaded in Step 1. Replace the mount path noted in the steps above with <Example/path/here> respectively, in the file.
 
 5. Replace File storage name after Replacing File Storage name
-![Replace file store](images/before-file-share.png)![Replace File store](image.png)
+
+![Replace file store](images/before-file-share.png)
+![Replace File store](image.png)
 
 6. After connecting with your cluster, deploy the latest Nginx ingress controller to your cluster.
 Run the following command to obtain the ingress IP address.
