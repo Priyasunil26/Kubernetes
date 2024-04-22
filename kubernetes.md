@@ -94,7 +94,7 @@ Bold BI supports three databases for deployment on a cluster:
 - Google Chrome
 
 ## Deployment using kubectl
-### [AKS&nbsp;&nbsp;&nbsp;&nbsp;](#deploying-bold-bi-on-microsoft-azure-kubernetes-service-aks)[EKS&nbsp;&nbsp;&nbsp;&nbsp;](#deploying-bold-bi-on-aws-elastic-kubernetes-service-eks)[GKE&nbsp;&nbsp;&nbsp;&nbsp;](#deploying-bold-bi-on-google-kubernetes-engine-gke)
+### [AKS&nbsp;&nbsp;&nbsp;&nbsp;](#deploying-bold-bi-on-microsoft-azure-kubernetes-service-aks)[EKS&nbsp;&nbsp;&nbsp;&nbsp;](#deploying-bold-bi-on-aws-elastic-kubernetes-service-eks)[GKE&nbsp;&nbsp;&nbsp;&nbsp;](#deploying-bold-bi-on-google-kubernetes-engine-gke)[On-premise&nbsp;&nbsp;&nbsp;&nbsp;](#deploying-bold-bi-on-on-premise)
 
 ### Deploying Bold BI on Microsoft Azure Kubernetes Service (AKS)
 1. Download the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/blob/mohamed/aks/boldbi/kustomization.yaml) file for Bold BI deployment in AKS.
@@ -206,6 +206,33 @@ https://console.cloud.google.com/filestore
     kubectl get pods -n bold-services
 
 14. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 8 to access the application in the browser.
+
+### Deploying Bold BI on On-premise
+
+1. Download the [Kustomization.yaml](https://raw.githubusercontent.com/sivakumar-devops/kustomization-improvement/mohamed/local/boldbi/kustomization.yaml) file below for Bold BI deployment in Local Cluster 
+2. Create a Kubernetes cluster in Local machine to deploy Bold BI.
+3. Create a Database.
+4. Open the Kustomization.yaml file that was downloaded in Step 1. Replace the mount path noted in the steps above with <Example/path/here> respectively, in the file.
+
+5. Replace File storage name After Replacing File Storage name
+
+6. After creating with your cluster, deploy the latest Nginx ingress controller to your cluster.
+Run the following command to obtain the ingress IP address.
+
+        kubectl get service/ingress-nginx-controller -n ingress-nginx
+
+7. After obtaining the External IP address, replace the app-base URL with your External IP address. 
+App-Base-URL
+8. Navigate to the folder where the deployment file were downloaded from Step 1.
+Run the following command to deploy Bold BI application on Local cluster 
+
+        kubectl apply -k .
+
+9. Please wait for some time until the Bold BI On-Premise application is deployed to your Local cluster.
+
+10. Use the following command to get the pods status. ```bash kubectl get pods -n bold-services
+
+11. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 10 to access the application in the browser.
 
 ## Startup Configuration
 
