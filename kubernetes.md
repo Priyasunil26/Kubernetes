@@ -214,15 +214,16 @@ https://console.cloud.google.com/filestore
 3. Create a Database.
 4. Open the Kustomization.yaml file that was downloaded in Step 1. Replace the mount path noted in the steps above with <Example/path/here> respectively, in the file.
 
-5. Replace File storage name After Replacing File Storage name
+5. Replace File storage name after Replacing File Storage name
+![Replace file store](images/before-file-share.png)![Replace File store](image.png)
 
-6. After creating with your cluster, deploy the latest Nginx ingress controller to your cluster.
+6. After connecting with your cluster, deploy the latest Nginx ingress controller to your cluster.
 Run the following command to obtain the ingress IP address.
 
         kubectl get service/ingress-nginx-controller -n ingress-nginx
 
 7. After obtaining the External IP address, replace the app-base URL with your External IP address. 
-App-Base-URL
+    ![change app base url](images/app-base-url.png)
 8. Navigate to the folder where the deployment file were downloaded from Step 1.
 Run the following command to deploy Bold BI application on Local cluster 
 
@@ -232,7 +233,7 @@ Run the following command to deploy Bold BI application on Local cluster
 
 10. Use the following command to get the pods status. ```bash kubectl get pods -n bold-services
 
-11. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 10 to access the application in the browser.
+11. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 6 to access the application in the browser.
 
 ## Startup Configuration
 
