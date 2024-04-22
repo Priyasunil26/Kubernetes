@@ -220,7 +220,7 @@ https://cloud.google.com/kubernetes-engine/docs/quickstart
 5. Replace File storage name after Replacing File Storage name
 
 ![Replace file store](images/before-file-share.png)
-![Replace File store](image.png)
+![Replace File store](images/replace-storage-name.png)
 
 6. After connecting with your cluster, deploy the latest Nginx ingress controller to your cluster.
 Run the following command to obtain the ingress IP address.
