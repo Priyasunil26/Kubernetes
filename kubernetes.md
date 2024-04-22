@@ -49,9 +49,10 @@ We currently support Nginx and Istio as load balancers in Bold BI. Nginx is used
 | Elastic Kubernetes Service (EKS)| kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/aws/deploy.yaml  |
 
 
-There is an issue with the latest Nginx Ingress controller where the default value for the `allow-snippet-annotations` is set to false. To resolve this, edit the Nginx Ingress ConfigMap file and set the value to true. Use the following command to edit the ConfigMap:
-![alt text](images/snippet-true.png)
+There is an issue with the latest Nginx Ingress controller where the default value for the `allow-snippet-annotations` is set to false. To resolve this, edit the Nginx Ingress ConfigMap file and set the value to true.
 
+![alt text](images/snippet-true.png)
+Use the following command to edit the ConfigMap:
     
     kubectl edit cm ingress-nginx-controller -n ingress-nginx
 
@@ -94,15 +95,15 @@ Bold BI supports three databases for deployment on a cluster:
 
 ## Deployment using kubectl
 [
-<kbd style="font-size: 15px; padding: 10px 20px;">AKS</kbd>
+<kbd style="font-size: 25px; padding: 10px 20px;">AKS</kbd>
 ](
 #deploying-bold-bi-on-microsoft-azure-kubernetes-service-aks
 ) [
-<kbd style="font-size: 15px; padding: 10px 20px;">EKS</kbd>
+<kbd style="font-size: 25px; padding: 10px 20px;">EKS</kbd>
 ](
 #deploying-bold-bi-on-aws-elastic-kubernetes-service-eks
 )  [
-<kbd style="font-size: 15px; padding: 10px 20px;">GKE</kbd>
+<kbd style="font-size: 25px; padding: 10px 20px;">GKE</kbd>
 ](
 #deploying-bold-bi-on-google-kubernetes-engine-gke
 )
