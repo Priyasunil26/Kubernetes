@@ -115,7 +115,7 @@ Bold BI supports three databases for deployment on a cluster:
 8. Run the following command to obtain the ingress IP address.
     ```bash 
     kubectl get service/ingress-nginx-controller -n ingress-nginx
-9. After obtaining the External IP address, replace the app-base URL with your External IP address.
+9. After obtaining the External IP address, replace the `app-base URL` with your External IP address.
     ![App-Base-URL](images/app-base-url.png)
 10. Navigate to the folder where the deployment file were downloaded from Step 1.
 11. Run the following command to deploy Bold BI application on AKS cluster
