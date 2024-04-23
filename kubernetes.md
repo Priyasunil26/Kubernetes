@@ -186,7 +186,7 @@ https://cloud.google.com/kubernetes-engine/docs/quickstart
 
 5. Note the `File share name and IP address` after creating filestore instance.
 
-6. Open Kustomization.yaml file, downloaded in Step 1.`Replace` the File share name and IP address noted in above step to the <file_share_name> and <file_share_ip_address> places in the file. You can also change the storage size in the YAML file. Save the file once you replaced the file share name and file share IP address.
+6. Open Kustomization.yaml file, downloaded in Step 1. Replace the `File share name and IP address` noted in above step to the <file_share_name> and <file_share_ip_address> places in the file. You can also change the storage size in the YAML file. Save the file once you replaced the file share name and file share IP address.
 
     ![Replace file store name](images/replace-filestore.png)
 7. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
@@ -195,7 +195,7 @@ https://cloud.google.com/kubernetes-engine/docs/quickstart
 8. Run the following command to obtain the ingress IP address.
     ```bash 
     kubectl get service/ingress-nginx-controller -n ingress-nginx
-9. After obtaining the External IP address, replace the app-base URL with your External IP address.
+9. After obtaining the External IP address, replace the `app-base URL` with your External IP address.
 
     ![App-Base-URL](images/app-base-url.png)
 10. Navigate to the folder where the deployment file were downloaded from Step 1.
