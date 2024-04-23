@@ -24,17 +24,17 @@ Every Kubernetes cluster variant comes with its unique benefits and applicable s
     - [Elastic Kubernetes Service](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
 
 **3. Persistent Volume**
-1. Local PV
+1. Local Persistent Volume
 2. [Azure NFS Fileshare](https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-portal?tabs=azure-portal)
 
-    **NOTE:** The premium storage account of the NFS fileshare must be within the same subscription as the AKS cluster.
+    **NOTE:** The `premium storage account` of the NFS fileshare must be within the same subscription as the AKS cluster.
 
 3. [Google Filestore](https://console.cloud.google.com/filestore)
 4. [Elastic Filestore](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html)
 
 **4. Load Balancer**
 
-We currently support Nginx and Istio as load balancers in Bold BI. Nginx is used as the default reverse proxy for Bold BI.
+We currently support `Nginx` and `Istio` as load balancers in Bold BI. Nginx is used as the default reverse proxy for Bold BI.
 
 ***Nginx***
 
@@ -99,17 +99,17 @@ Bold BI supports three databases for deployment on a cluster:
 
 ### Deploying Bold BI on Microsoft Azure Kubernetes Service (AKS)
 1. Download the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/blob/mohamed/aks/boldbi/kustomization.yaml) file for Bold BI deployment in AKS.
-2. Create a Kubernetes cluster in Microsoft Azure Kubernetes Service (AKS) to deploy Bold BI.
-3. Create a File share instance in your storage account and note the File share name to store the shared folders for application usage.
-4. Create a Database.
-5. Open the Kustomization.yaml file that was downloaded in Step 1. Replace the storage account name and file share name noted in the steps above with <storageaccountname> and <file_share_name>, respectively, in the file.
+2. Create a `Kubernetes cluster` in Microsoft Azure Kubernetes Service (AKS) to deploy Bold BI.
+3. Create a `File share instance` in your storage account and note the File share name to store the shared folders for application usage.
+4. Create a `Database`.
+5. Open the Kustomization.yaml file that was downloaded in Step 1. Replace the `storage account name and file share name` noted in the steps above with <storageaccountname> and <file_share_name>, respectively, in the file.
     ![Replace File storage name](images/replace-storage-name.png)
     ![After Replacing File Storage name](images/After-replace-fileshare.png)
-6. Connect with your Microsoft AKS cluster.
+6. `Connect` with your Microsoft AKS cluster.
 
     https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#connect-to-the-cluster
 
-7. After connecting with your cluster, deploy the latest Nginx ingress controller to your cluster using the following command.
+7. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
     ```bash 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
 8. Run the following command to obtain the ingress IP address.
@@ -135,21 +135,21 @@ Bold BI supports three databases for deployment on a cluster:
 1. Download the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/blob/mohamed/eks/boldbi/kustomization.yaml) file  for Bold BI deployment in EKS.
 
 
-2. Create a Kubernetes cluster in AWS Elastic Kubernetes Service (EKS) and node group to deploy Bold BI.
+2. Create a `Kubernetes cluster` in AWS Elastic Kubernetes Service (EKS) and node group to deploy Bold BI.
 
-3. Connect to your Amazon EKS cluster.
+3. `Connect` to your Amazon EKS cluster.
     https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/
 
-4. Note the File System ID to store the shared folders for application usage.
+4. Note the `File System ID` to store the shared folders for application usage.
     ![File-System-ID](images/file-system-id.png)
 
-5. Access the link provided in the prerequisites to create a database.
+5. Access the link provided in the prerequisites to create a `database`.
 
-6. Open kustomisation.yaml file, downloaded in Step 1. Replace the File system ID noted in Step 5 to the <efs_file_system_id> place in the file. 
+6. Open kustomisation.yaml file, downloaded in Step 1. `Replace` the File system ID noted in Step 5 to the <efs_file_system_id> place in the file. 
 
     ![replace-fs-id](images/replace-fs-id.png)
 
-7. Deploy the latest Nginx ingress controller to your cluster using the following command.
+7. Deploy the `latest Nginx ingress controller` to your cluster using the following command.
     ```bash 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
 
@@ -157,7 +157,7 @@ Bold BI supports three databases for deployment on a cluster:
     ```bash 
     kubectl get service/ingress-nginx-controller -n ingress-nginx
 
-9. After obtaining the External IP address, replace the app-base URL with your External IP address.
+9. After obtaining the External IP address, replace the `app-base URL` with your External IP address.
     ![Replace-app-base-url](images/replace-url.png)
 
 10. Navigate to the folder where the deployment files were downloaded from Step 1.
@@ -177,19 +177,19 @@ Bold BI supports three databases for deployment on a cluster:
 ### Deploying Bold BI on Google Kubernetes Engine (GKE)
 1. Download the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/tree/mohamed/gke/boldbi) file for Bold BI deployment in GKE. 
 
-2. Create a Kubernetes cluster in Google Cloud Platform (GCP) to deploy Bold BI.
+2. Create a `Kubernetes clust`er in Google Cloud Platform (GCP) to deploy Bold BI.
 
-3. Connect with your GKE cluster.
+3. `Connect` with your GKE cluster.
 https://cloud.google.com/kubernetes-engine/docs/quickstart
 
-4. Create a Google filestore instance to store the shared folders for application usage.
+4. Create a Google `filestore instanc`e to store the shared folders for application usage.
 
-5. Note the File share name and IP address after creating filestore instance.
+5. Note the `File share name and IP address` after creating filestore instance.
 
-6. Open Kustomization.yaml file, downloaded in Step 1.Replace the File share name and IP address noted in above step to the <file_share_name> and <file_share_ip_address> places in the file. You can also change the storage size in the YAML file. Save the file once you replaced the file share name and file share IP address.
+6. Open Kustomization.yaml file, downloaded in Step 1.`Replace` the File share name and IP address noted in above step to the <file_share_name> and <file_share_ip_address> places in the file. You can also change the storage size in the YAML file. Save the file once you replaced the file share name and file share IP address.
 
     ![Replace file store name](images/replace-filestore.png)
-7. After connecting with your cluster, deploy the latest Nginx ingress controller to your cluster using the following command.
+7. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
     ```bash 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
 8. Run the following command to obtain the ingress IP address.
@@ -213,21 +213,21 @@ https://cloud.google.com/kubernetes-engine/docs/quickstart
 ### Deploying Bold BI on On-premise
 
 1. Download the [Kustomization.yaml](https://raw.githubusercontent.com/sivakumar-devops/kustomization-improvement/mohamed/local/boldbi/kustomization.yaml) file below for Bold BI deployment in Local Cluster 
-2. Create a Kubernetes cluster in Local machine to deploy Bold BI.
-3. Create a Database.
-4. Open the Kustomization.yaml file that was downloaded in Step 1. Replace the mount path noted in the steps above with <Example/path/here> respectively, in the file.
+2. Create a `Kubernetes cluster` in Local machine to deploy Bold BI.
+3. Create a `Database`.
+4. Open the Kustomization.yaml file that was downloaded in Step 1. Replace the `mount path` noted in the steps above with <Example/path/here> respectively, in the file.
 
-5. Replace File storage name after Replacing File Storage name
+5. Replace `File storage name` after Replacing File Storage name
 
     ![Replace file store](images/before-file-share.png)
     ![Replace File store](images/replace-storage-name.png)
 
-6. After connecting with your cluster, deploy the latest Nginx ingress controller to your cluster.
+6. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster.
 Run the following command to obtain the ingress IP address.
 
         kubectl get service/ingress-nginx-controller -n ingress-nginx
 
-7. After obtaining the External IP address, replace the app-base URL with your External IP address. 
+7. After obtaining the External IP address, replace the `app-base URL` with your External IP address. 
     ![change app base url](images/app-base-url.png)
 8. Navigate to the folder where the deployment file were downloaded from Step 1.
 Run the following command to deploy Bold BI application on Local cluster 
