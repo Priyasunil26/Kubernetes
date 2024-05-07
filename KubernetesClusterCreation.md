@@ -14,24 +14,6 @@ Installation: [Rancher Desktop Getting Started](https://docs.rancherdesktop.io/g
 Installation: [Kubeadm Cluster Setup](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
     
 ## Cloud Provider Clusters
-- Azure Kubernetes Service (AKS)
-
-    Getting Started: [Azure AKS Walkthrough](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal)
-
-    Connect Your cluster: [Connection](
-        https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#connect-to-the-cluster)
-- Google Kubernetes Engine (GKE)
-
-    Getting Started: [Google GKE Console](https://console.cloud.google.com/kubernetes)
-
-    Connect Your cluster: [Connection](https://cloud.google.com/kubernetes-engine/docs/quickstart)
-    
-  
-- Elastic Kubernetes Service (EKS)
-
-    Getting Started: [AWS EKS Guide](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
-
-    Connect Your cluster: [Connection](https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/)
 
 
 | Cloud Providers            | Cluster Creation                                                                                   | Cluster Connection                                                                                     |

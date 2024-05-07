@@ -1,19 +1,13 @@
 # Deploying Bold BI on Kubernetes
 
-## Deployment Guidelines
-
-### Prerequisites
+## Prerequisites
 
 1. [Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 2. [Kubernetes Cluster](KubernetesClusterCreation.md)
 3. [Persistent Volume](PersistentVolumeCreation.md)
 4. [Load Balancer](Loadbalancer.md)
 5. [Database](DatabaseCreation.md)
-6. Web Browsers
-
-- Microsoft Edge
-- Mozilla Firefox
-- Google Chrome
+6. Web Browsers - The supported web browsers include Microsoft Edge, Mozilla Firefox, and Google Chrome.
 
 ## Deployment using kubectl
 
