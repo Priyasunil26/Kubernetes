@@ -22,6 +22,7 @@
     | Azure File Share    | Replace the `storage account name and file share name` noted in the steps above with <storageaccountname> and <file_share_name>, respectively, in the file. | ![After Replacing File Storage name](images/After-replace-fileshare.png) |
     |  GKE File Store   | Replace the `File share name and IP address` noted in above step to the <file_share_name> and <file_share_ip_address> places in the file. You can also change the storage size in the YAML file. Save the file once you replaced the file share name and file share IP address. | ![Replace file store name](images/replace-filestore.png) |
     |  Elastic File Storage for EKS    |  Replace the `File system ID` noted in above step to the <efs_file_system_id> place in the file. | ![replace-fs-id](images/replace-fs-id.png) |
+    |  OnPremise    |   Replace the `mount path` noted in the steps above with <Example/path/here> respectively, in the file. Replace `File storage name` after Replacing File Storage name | ![Onpremise mount Path](images/on-premise-mountpath.png) |
 
 6. `Connect` with your  cluster.
 
