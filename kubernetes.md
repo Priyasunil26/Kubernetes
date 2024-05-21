@@ -49,7 +49,7 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
 |File Storage                  | Action |
 -------------------------------|-------------------------------|
 | Azure File Share             | Replace the `storage account name and file share name` with `<storage_account_name>` and `<file_share_name>`, respectively, in the file.                                ![After Replacing File Storage name](images/After-replace-fileshare.png)                               |
-| GKE File Store               | Replace the `File share name and IP address` with `<file_share_name>` and `<file_share_ip_address>`, respectively, in the file.                                                 ![Replace file store name](images/replace-filestore.png)                                              |
+| GKE File Store               | Replace the `File share name and IP address` with `<file_share_name>` and `<file_share_ip_address>`, in the file.                                                 ![Replace file store name](images/replace-filestore.png)                                              |
 | Elastic File Storage for EKS | Replace the `File system ID` with `<efs_file_system_id>` in the file.                                                                                                          ![replace-fs-id](images/replace-fs-id.png)                                                                |
 
 
