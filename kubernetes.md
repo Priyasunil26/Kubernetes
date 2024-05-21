@@ -49,13 +49,15 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
     |File Storage | Action |
     |------|--------|
     | Azure File Share    | Replace the `storage account name and file share name` with <storage_account_name> and <file_share_name>, respectively, in the file.                       ![After Replacing File Storage name](images/After-replace-fileshare.png) |
-    |  GKE File Store   | Replace the `File share name and IP address` to the <file_share_name> and <file_share_ip_address> places in the file.                         ![Replace file store name](images/replace-filestore.png) |
+    |  GKE File Store   | Replace the `File share name and IP address` to the <file_share_name> and <file_share_ip_address> places in the file.   ![Replace file store name](images/replace-filestore.png) |
     |  Elastic File Storage for EKS    |  Replace the `File system ID` to the <efs_file_system_id> place in the file.                        ![replace-fs-id](images/replace-fs-id.png) |
 
 6. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
     ```bash 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
- For more information about the load balancer installation, please refer to this [link](https://kubernetes.github.io/ingress-nginx/deploy/).
+    ```
+ 
+    For more information about the load balancer installation, please refer to this [link](https://kubernetes.github.io/ingress-nginx/deploy/).
 
 7. Run the following command to obtain the ingress IP address. If you want to use a domain name, map the external IP address obtained from the command below to the domain name in your DNS settings
     ```bash 
