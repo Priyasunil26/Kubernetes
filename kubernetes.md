@@ -46,11 +46,11 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
 
 5. Open the Kustomization.yaml file. Edit the File store Path value.
 
-|File Storage                  | Action |
--------------------------------|-------------------------------|
-| Azure File Share             | Replace the `storage account name and file share name` with `<storage_account_name>` and `<file_share_name>`, respectively, in the file.                                ![After Replacing File Storage name](images/After-replace-fileshare.png)                               |
-| GKE File Store               | Replace the `File share name and IP address` with `<file_share_name>` and `<file_share_ip_address>`, in the file.                                                 ![Replace file store name](images/replace-filestore.png)                                              |
-| Elastic File Storage for EKS | Replace the `File system ID` with `<efs_file_system_id>` in the file.                                                                                                          ![replace-fs-id](images/replace-fs-id.png)                                                                |
+    |File Storage                  | Action |
+    -------------------------------|-------------------------------|
+    | Azure File Share             | Replace the `storage account name and file share name` with `<storage_account_name>` and `<file_share_name>`, respectively, in the file.                                ![After Replacing File Storage name](images/After-replace-fileshare.png)                               |
+    | GKE File Store               | Replace the `File share name and IP address` with `<file_share_name>` and `<file_share_ip_address>`, in the file.                                                 ![Replace file store name](images/replace-filestore.png)                                              |
+    | Elastic File Storage for EKS | Replace the `File system ID` with `<efs_file_system_id>` in the file.                                                                                                          ![replace-fs-id](images/replace-fs-id.png)                                                                |
 
 
 6. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
@@ -65,6 +65,7 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
     kubectl get service/ingress-nginx-controller -n ingress-nginx
 
 8. After obtaining the External IP address, replace the `app-base URL` with your External IP address or Domain name.
+
     ![App-Base-URL](images/app-base-url.png)
 
 9. Navigate to the folder where the deployment file were downloaded from Step 4.
@@ -78,4 +79,8 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
     kubectl get pods -n bold-services
 
 13. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 7 to access the application in the browser.
+
+14. Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
+
+https://help.boldbi.com/embedded-bi/application-startup
 
