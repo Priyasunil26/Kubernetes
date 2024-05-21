@@ -1,51 +1,77 @@
 # Deploying Bold BI on Kubernetes
+This section provides instructions on how to deploy Bold BI in different cloud cluster. Please follow the documentation below to successfully deploy the application.
 
 ## Prerequisites
 
-1. [Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
-2. [Kubernetes Cluster](KubernetesClusterCreation.md)
-3. [Persistent Volume](PersistentVolumeCreation.md)
-4. [Load Balancer](Loadbalancer.md)
-5. [Database](DatabaseCreation.md)
-6. Web Browsers - The supported web browsers include Microsoft Edge, Mozilla Firefox, and Google Chrome.
+- [Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl): Make sure you install kubectl on your local machine to facilitate the deployment process.
+- Kubernetes Cluster ([AKS](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal), [AWS](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#connect-to-the-cluster), [GKE](https://console.cloud.google.com/kubernetes)): Create a cluster in which you want to deploy the Bold BI Application.
+- [Persistent Volume](PersistentVolumeCreation.md): Set up the necessary file storage for your Kubernetes clusters.
+- [Load Balancer](Loadbalancer.md)
+- [Database](DatabaseCreation.md)
+- Web Browsers: The supported web browsers include Microsoft Edge, Mozilla Firefox, and Google Chrome.
+
+Please ensure that you have fulfilled these prerequisites before proceeding with the deployment.
 
 ## Deployment using kubectl
 
-1. Get the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/tree/mohamed) file for deploying Bold BI in a Cluster. Ensure to choose the correct configuration for your specific requirement, whether it's for Azure Kubernetes Service (AKS), Amazon Elastic Kubernetes Service (EKS), or Google Kubernetes Engine (GKE).
-2. Create a `Kubernetes cluster` to deploy Bold BI.
-3. Create a `File share instance` in your storage account and note the File share name to store the shared folders for application usage.
-4. Deploy a `managed database` or deploy it within the cluster as an alternative.
-5. Open the Kustomization.yaml file that was downloaded in Step 1. Edit the File store Path value.
+1. `Create` and `connect` to a Kubernetes cluster to deploy Bold BI. Please refer to the table below for instructions on how to create and connect to a cluster on different cloud providers.
+
+    | Cloud Providers            | Cluster Creation                                                                                    | Cluster Connection                                                                                      |
+    |----------------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+    | Azure Kubernetes Service   | [Azure AKS Walkthrough](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal) | [AKS Cluster Connection](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#connect-to-the-cluster) |
+    | Google Kubernetes Engine   | [Google GKE Console](https://console.cloud.google.com/kubernetes)                                | [GKE Cluster Connection](https://cloud.google.com/kubernetes-engine/docs/quickstart)                     |
+    | Elastic Kubernetes Service | [AWS EKS Guide](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)             | [EKS Cluster Connection](https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/) |
+
+2. Create a `File share instance` in your storage account and note the File share name to store the shared folders for application usage.
+
+    | **Cloud Provider** | **Link** |
+    |--------------------|----------|
+    | ## AKS File Storage | [Create an NFS file share instance](https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-portal?tabs=azure-portal) |
+    | # EKS File System   | [Create an Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) |
+    | ## GKE File Store   | [Create a Google filestore instance](https://console.cloud.google.com/filestore) |
+
+Please ensure that you follow the provided links to set up the necessary file storage for your Kubernetes clusters.
+
+3. Deploy a `managed database` or deploy it within the cluster as an alternative,  you can follow the guidelines provided by the respective cloud providers for PostgreSQL, MS SQL, and MySQL.
+
+    | Cloud Provider | Database    | Reference Link                                                                                      |
+    |----------------|-------------|----------------------------------------------------------------------------------------------------|
+    | Azure          | PostgreSQL<br><br> MS SQL<br><br> MySQL | [Azure PostgreSQL Quickstart](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/quickstart-create-server-portal)<br><br>[MS SQL Quickstart](https://learn.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?view=azuresql&tabs=azure-portal)<br><br> [MySQL Quickstart](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/quickstart-create-server-portal) |
+    | AWS            | PostgreSQL<br><br>MS SQL<br><br>MySQL | [PostgreSQL Quickstart](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html)<br><br>[MS SQL Quickstart](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)<br><br> [MySQL Quickstart](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html) |
+    | GCP            | PostgreSQL<br><br>MySQL<br><br>SQL Server | [PostgreSQL Quickstart](https://cloud.google.com/sql/docs/postgres/create-instance)<br><br>[MySQL Quickstart](https://cloud.google.com/sql/docs/mysql/create-instance)<br><br>[SQL Server Quickstart](https://cloud.google.com/sql/docs/sqlserver/create-instance) |
+
+    These guides will provide you with step-by-step instructions on how to deploy a managed database on each respective cloud provider.
+
+4.  Download the [Kustomization.yaml](https://github.com/sivakumar-devops/kustomization-improvement/tree/mohamed) file for deploying Bold BI in a Cluster. Ensure to choose the correct configuration for your specific requirement, whether it's for Azure Kubernetes Service (AKS), Amazon Elastic Kubernetes Service (EKS), or Google Kubernetes Engine (GKE).
+
+5. Open the Kustomization.yaml file. Edit the File store Path value.
 
     |File Storage | Action | Image |
     |------|--------|-------|
-    | Azure File Share    | Replace the `storage account name and file share name` noted in the steps above with <storageaccountname> and <file_share_name>, respectively, in the file. | ![After Replacing File Storage name](images/After-replace-fileshare.png) |
-    |  GKE File Store   | Replace the `File share name and IP address` noted in above step to the <file_share_name> and <file_share_ip_address> places in the file. You can also change the storage size in the YAML file. Save the file once you replaced the file share name and file share IP address. | ![Replace file store name](images/replace-filestore.png) |
-    |  Elastic File Storage for EKS    |  Replace the `File system ID` noted in above step to the <efs_file_system_id> place in the file. | ![replace-fs-id](images/replace-fs-id.png) |
-    |  OnPremise    |   Replace the `mount path` noted in the steps above with <Example/path/here> respectively, in the file. Replace `File storage name` after Replacing File Storage name | ![Onpremise mount Path](images/on-premise-mountpath.png) |
+    | Azure File Share    | Replace the `storage account name and file share name` with <storageaccountname> and <file_share_name>, respectively, in the file. | ![After Replacing File Storage name](images/After-replace-fileshare.png) |
+    |  GKE File Store   | Replace the `File share name and IP address` to the <file_share_name> and <file_share_ip_address> places in the file.  ![Replace file store name](images/replace-filestore.png) |
+    |  Elastic File Storage for EKS    |  Replace the `File system ID` to the <efs_file_system_id> place in the file. | ![replace-fs-id](images/replace-fs-id.png) |
 
-6. `Connect` with your  cluster.
-
-7. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
+6. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
     ```bash 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
 
-8. Run the following command to obtain the ingress IP address.
+7. Run the following command to obtain the ingress IP address. If you want to use a domain name, map the external IP address obtained from the command below to the domain name in your DNS settings
     ```bash 
     kubectl get service/ingress-nginx-controller -n ingress-nginx
 
-9. After obtaining the External IP address, replace the `app-base URL` with your External IP address.
+8. After obtaining the External IP address, replace the `app-base URL` with your External IP address or Domain name.
     ![App-Base-URL](images/app-base-url.png)
 
-10. Navigate to the folder where the deployment file were downloaded from Step 1.
-11. Run the following command to deploy Bold BI application on AKS cluster
+9. Navigate to the folder where the deployment file were downloaded from Step 4.
+10. Run the following command to deploy Bold BI application on cluster
     ```bash
     kubectl apply -k .
-12. Please wait for some time until the Bold BI On-Premise application is deployed to your Microsoft AKS cluster.
+11. Please wait for some time until the Bold BI  application is deployed to your cluster.
 
-13. Use the following command to get the pods status.
+12. Use the following command to get the pods status.
     ```bash 
     kubectl get pods -n bold-services
 
-14. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 8 to access the application in the browser.
+13. Wait until you see the applications running. Then, use the DNS or ingress IP address you obtained from Step 7 to access the application in the browser.
 
