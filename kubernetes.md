@@ -30,7 +30,7 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
     | # EKS File System   | [Create an Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) |
     | ## GKE File Store   | [Create a Google filestore instance](https://console.cloud.google.com/filestore) |
 
-Please ensure that you follow the provided links to set up the necessary file storage for your Kubernetes clusters.
+    Please ensure that you follow the provided links to set up the necessary file storage for your Kubernetes clusters.
 
 3. Deploy a `managed database` or deploy it within the cluster as an alternative,  you can follow the guidelines provided by the respective cloud providers for PostgreSQL, MS SQL, and MySQL.
 
@@ -48,9 +48,9 @@ Please ensure that you follow the provided links to set up the necessary file st
 
     |File Storage | Action | Image |
     |------|--------|-------|
-    | Azure File Share    | Replace the `storage account name and file share name` with <storageaccountname> and <file_share_name>, respectively, in the file. | ![After Replacing File Storage name](images/After-replace-fileshare.png) |
-    |  GKE File Store   | Replace the `File share name and IP address` to the <file_share_name> and <file_share_ip_address> places in the file.  ![Replace file store name](images/replace-filestore.png) |
-    |  Elastic File Storage for EKS    |  Replace the `File system ID` to the <efs_file_system_id> place in the file. | ![replace-fs-id](images/replace-fs-id.png) |
+    | Azure File Share    | Replace the `storage account name and file share name` with <storageaccountname> and <file_share_name>, respectively, in the file.                       ![After Replacing File Storage name](images/After-replace-fileshare.png) |
+    |  GKE File Store   | Replace the `File share name and IP address` to the <file_share_name> and <file_share_ip_address> places in the file.                        ![Replace file store name](images/replace-filestore.png) |
+    |  Elastic File Storage for EKS    |  Replace the `File system ID` to the <efs_file_system_id> place in the file.                        ![replace-fs-id](images/replace-fs-id.png) |
 
 6. After connecting with your cluster, deploy the `latest Nginx ingress controller` to your cluster using the following command.
     ```bash 
