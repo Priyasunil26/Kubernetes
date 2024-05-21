@@ -3,18 +3,18 @@ This section provides instructions on how to deploy Bold BI in different cloud c
 
 ## Prerequisites
 
-- [Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl): Make sure you install kubectl on your local machine to facilitate the deployment process.
-- Kubernetes Cluster ([AKS](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal), [AWS](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#connect-to-the-cluster), [GKE](https://console.cloud.google.com/kubernetes)): Create a cluster in which you want to deploy the Bold BI Application.
-- [Persistent Volume](PersistentVolumeCreation.md): Set up the necessary file storage for your Kubernetes clusters.
-- [Load Balancer](Loadbalancer.md)
-- [Database](DatabaseCreation.md)
-- Web Browsers: The supported web browsers include Microsoft Edge, Mozilla Firefox, and Google Chrome.
+- **[Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)**: Make sure you install kubectl on your local machine to facilitate the deployment process.
+- **Kubernetes Cluster**([AKS](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal), [AWS](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#connect-to-the-cluster), [GKE](https://console.cloud.google.com/kubernetes)): Create a cluster in which you want to deploy the Bold BI Application.
+- **[Persistent Volume](PersistentVolumeCreation.md)**: Set up the necessary file storage for your Kubernetes clusters.
+- **Load Balancer**: To configure Bold BI with Ingress, you need to install the [Nginx Ingress controller](https://kubernetes.github.io/ingress-nginx/deploy/) in your cluster
+- **Database**: Create a Database to store metadata and intermediate data details of the Bold BI site 
+- **Web Browsers**: The supported web browsers include Microsoft Edge, Mozilla Firefox, and Google Chrome.
 
 Please ensure that you have fulfilled these prerequisites before proceeding with the deployment.
 
 ## Deployment using kubectl
 
-1. `Create` and `connect` to a Kubernetes cluster to deploy Bold BI. Please refer to the table below for instructions on how to create and connect to a cluster on different cloud providers.
+1. Create and connect to a Kubernetes cluster to deploy Bold BI. Please refer to the table below for instructions on how to create and connect to a cluster on different cloud providers.
 
     | Cloud Providers            | Cluster Creation                                                                                    | Cluster Connection                                                                                      |
     |----------------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
@@ -22,7 +22,7 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
     | Google Kubernetes Engine   | [Google GKE Console](https://console.cloud.google.com/kubernetes)                                | [GKE Cluster Connection](https://cloud.google.com/kubernetes-engine/docs/quickstart)                     |
     | Elastic Kubernetes Service | [AWS EKS Guide](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)             | [EKS Cluster Connection](https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/) |
 
-2. Create a `File share instance` in your storage account and note the File share name to store the shared folders for application usage.
+2. Create a File share instance in your storage account and note the File share name to store the shared folders for application usage.
 
     | **Cloud Provider** | **Link** |
     |--------------------|----------|
@@ -32,7 +32,7 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
 
     Please ensure that you follow the provided links to set up the necessary file storage for your Kubernetes clusters.
 
-3. Deploy a `managed database` or deploy it within the cluster as an alternative,  you can follow the guidelines provided by the respective cloud providers for PostgreSQL, MS SQL, and MySQL.
+3. Create a managed database or deploy it within the cluster as an alternative,  you can follow the guidelines provided by the respective cloud providers for PostgreSQL, MS SQL, and MySQL.
 
     | Cloud Provider | Database    | Reference Link                                                                                      |
     |----------------|-------------|----------------------------------------------------------------------------------------------------|
@@ -46,9 +46,9 @@ Please ensure that you have fulfilled these prerequisites before proceeding with
 
 5. Open the Kustomization.yaml file. Edit the File store Path value.
 
-    |File Storage | Action | Image |
-    |------|--------|-------|
-    | Azure File Share    | Replace the `storage account name and file share name` with <storageaccountname> and <file_share_name>, respectively, in the file.                       ![After Replacing File Storage name](images/After-replace-fileshare.png) |
+    |File Storage | Action |
+    |------|--------|
+    | Azure File Share    | Replace the `storage account name and file share name` with <storage_account_name> and <file_share_name>, respectively, in the file.                       ![After Replacing File Storage name](images/After-replace-fileshare.png) |
     |  GKE File Store   | Replace the `File share name and IP address` to the <file_share_name> and <file_share_ip_address> places in the file.                        ![Replace file store name](images/replace-filestore.png) |
     |  Elastic File Storage for EKS    |  Replace the `File system ID` to the <efs_file_system_id> place in the file.                        ![replace-fs-id](images/replace-fs-id.png) |
 

@@ -1,8 +1,7 @@
 # Persistent Volumes
-1. Local Persistent Volume
-2. AKS File Storage
-3. Google Kubernetes Engine (GKE)
-4. Amazon Elastic Kubernetes Service (EKS)
+1. AKS File Storage
+2. Google Kubernetes Engine (GKE)
+3. Amazon Elastic Kubernetes Service (EKS)
 
 ## AKS File Storage
 - Create an [NFS file share instance](https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-portal?tabs=azure-portal) within your premium storage account. 
